@@ -26,22 +26,22 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="ele col-md-6">
+            <div class="ele col-md-6 col-lg-3">
                 <div class="card text-white bg-success">
                     <div class="card-header">
-                        <input class="form-control" type="text" value="27.04.2021" aria-label="default input example">
+                        <input class="form-control" type="text" id="datum-aendern" value="27.04.2021" aria-label="default input example">
                     </div>
                     <div class="card-body">
                         <textarea class="form-control" id="TODO-aendern" rows="3">Eine Gruppe (max 2 Personen) erstellt mit dem Bootstrap Framework eine statische Webseite die einen einfachen TODO-Tracker simuliert.</textarea>
                         <div id="progress">
-                            <input type="range" class="form-range" id="customRange1">
+                            <input type="range" class="form-range" value= "90" id="customRange1">
                             <span>0%</span><span id="edit-hundred">100%</span>                       
                         </div>
 
                         <div class="container">
                           <div class="row">
-                              <button type="button" class="btn btn-light card-buttons col-sm-5" onclick="test()">bestätigen</button>
-                              <button type="button" class="btn btn-light card-buttons col-sm-5 ml-auto">abbrechen</button>
+                              <button type="button" class="btn btn-light card-buttons col-sm-5" onclick="editieren()">bestätigen</button>
+                              <button type="button" class="btn btn-light card-buttons col-sm-5 ml-auto" onclick="parent.location='index.html'">abbrechen</button>
                           </div>
                     </div>
                     </div>
