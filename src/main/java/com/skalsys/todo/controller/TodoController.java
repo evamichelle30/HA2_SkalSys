@@ -16,6 +16,7 @@ public class TodoController {
 
     @GetMapping("/todos")
     public List<Todo> getAllTodos(){
+        Todo test = new Todo();
         return repository.findAll();
        /* List<Todo> todos = new ArrayList<>(Arrays.asList(
                 new Todo(),
