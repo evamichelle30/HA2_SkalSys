@@ -9,9 +9,6 @@ class Todo {
     }
 }
 
-
-
-
 function anlegen() {
     var description = document.getElementById("TODO-eingeben").value;
     var date = document.getElementById("datum-eingeben").value;
