@@ -15,6 +15,7 @@ function anlegen() {
     var anlegen = new Todo(0, date, description, 0);
     console.log(JSON.stringify(anlegen));
     //hier ein POST request
+    
     parent.location='index.html';
 }
 
@@ -53,15 +54,30 @@ function card(id, date, description, progress) {
 
 function createCards() {
     //hier ein GET request an den server
-    var receivedData = '[{"id": 13324, "date":"01.03.2020", "description":"Baum fällen", "progress":80},{"id": 13524, "date":"19.08.2022", "description":"Zimmer aufräumen", "progress":20},{"id": 12324, "date":"11.08.2020", "description":"Bett beziehen", "progress":0},{"id": 16324, "date":"11.02.2020", "description":"Nudeln kochen", "progress":100}]';
-    var todos = JSON.parse(receivedData);
-    for(var i = 0; i < todos.length; i++){
-        var id = todos[i].id;
-        var date = todos[i].date;
-        var description = todos[i].description;
-        var progress = todos[i].progress;
-        document.getElementById("todo-list").innerHTML += card(id, date, description, progress);
-    }
+    var xhr = new XMLHttpRequest();
+    var todos;
+    xhr.onreadystatechange = function () {
+        if (this.readyState != 4) return;
+    
+        if (this.status == 200) {
+            todos = JSON.parse(this.responseText);
+            for(let i = 0; i < todos.length; i++){
+                let id = todos[i].id;
+                let date = todos[i].date;
+                let description = todos[i].description;
+                let progress = todos[i].progress;
+                document.getElementById("todo-list").innerHTML += card(id, date, description, progress);
+            }
+            // we get the returned data
+        }
+    
+        // end of state change: it can be after some time (async)
+    };
+
+    xhr.open("GET", "http://localhost:8080/todos/", true);
+    xhr.send();
+    const receivedData = '[{"id": 13324, "date":"02.03.2020", "description":"Baum fällen", "progress":80},{"id": 13524, "date":"19.08.2022", "description":"Zimmer aufräumen", "progress":20},{"id": 12324, "date":"11.08.2020", "description":"Bett beziehen", "progress":0},{"id": 16324, "date":"11.02.2020", "description":"Nudeln kochen", "progress":100}]';
+
 }
 
 function loeschen(id) {
@@ -77,7 +93,7 @@ function editCard(id) {
     var date = document.getElementById("date" + id).innerHTML.substr(7);
     var description = document.getElementById("description" + id).innerHTML;
     var progress = document.getElementById("progress" + id).innerHTML.slice(0,-1);
-    editHTML = `<div class="card text-white bg-success">
+    var editHTML = `<div class="card text-white bg-success">
     <div class="card-header">
         <input class="form-control" type="text" id="datum-aendern" value="` + date + 
         `" aria-label="default input example">
