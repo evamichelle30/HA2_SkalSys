@@ -11,4 +11,4 @@ mysql> create user 'springuser'@'%' identified by 'Password'; -- Erstellt den Be
 mysql> grant all on db_todos.* to 'springuser'@'%'; -- Gibt dem neuen Nutzer alle Rechte für die neue Datenbank
 
 Dann kann auch schon der Server gestartet werden in dem man Run TodoApplication macht.
-index.html kann im Browser geöffnet werden und schon kann man Todos hinzufügen, editieren, löschen und sich anzeigen lassen!
+Darauf hin kann index.html kann im Browser geöffnet werden und schon kann man Todos hinzufügen, editieren, löschen und sich anzeigen lassen!
