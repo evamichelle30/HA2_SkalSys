@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 @RestController // initialisierung
 public class TodoController {
     @Autowired //Spring bitte gib mir ein singleton
