@@ -36,7 +36,7 @@ function editieren(id) {
 
 function card(id, date, description, progress) {
     return `<div class="ele col-md-6 col-lg-3" id="card` + id + `">
-      <div class="card text-white bg-success">
+      <div class="card text-white bg-info">
         <div class="card-header" id="date` + id + `">Datum: ` + date +
     `</div>
     <div class="card-body">
@@ -81,7 +81,6 @@ function createCards() {
 
     xhr.open("GET", "http://localhost:8080/todos/", true);
     xhr.send();
-    const receivedData = '[{"id": 13324, "date":"02.03.2020", "description":"Baum fällen", "progress":80},{"id": 13524, "date":"19.08.2022", "description":"Zimmer aufräumen", "progress":20},{"id": 12324, "date":"11.08.2020", "description":"Bett beziehen", "progress":0},{"id": 16324, "date":"11.02.2020", "description":"Nudeln kochen", "progress":100}]';
 
 }
 
@@ -102,7 +101,7 @@ function editCard(id) {
     var date = document.getElementById("date" + id).innerHTML.substr(7);
     var description = document.getElementById("description" + id).innerHTML;
     var progress = document.getElementById("progress" + id).innerHTML.slice(0,-1);
-    var editHTML = `<div class="card text-white bg-success">
+    var editHTML = `<div class="card text-white bg-info">
     <div class="card-header">
         <input class="form-control" type="text" id="datum-aendern" value="` + date + 
         `" aria-label="default input example">
