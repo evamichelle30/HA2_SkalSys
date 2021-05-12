@@ -1,5 +1,4 @@
 
-
 class Todo {
     constructor(id, date, description, progress) {
         this.id = id;

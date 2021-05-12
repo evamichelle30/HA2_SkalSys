@@ -22,19 +22,7 @@ public class TodoController {
 
     @GetMapping("/todos")
     public List<Todo> getAllTodos(){
-        Todo test = new Todo();
         return repository.findAll();
-       /* List<Todo> todos = new ArrayList<>(Arrays.asList(
-                new Todo(),
-                new Todo(),
-                new Todo()
-        ));
-        Todo test = new Todo();
-        test.setDescription("Das ist ein Test");
-        test.setDate("07.05.21");
-        test.setProgress(0);
-        todos.add(test);
-        return todos;*/
     }
 
     @RequestMapping("/todos/{id}")
