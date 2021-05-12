@@ -1,5 +1,4 @@
 
-
 class Todo {
     constructor(id, date, description, progress) {
         this.id = id;
@@ -53,8 +52,8 @@ function card(id, date, description, progress) {
 
 function createCards() {
     //hier ein GET request an den server
-    var receivedData = '[{"id": 13324, "date":"01.03.2020", "description":"Baum fällen", "progress":80},{"id": 13524, "date":"19.08.2022", "description":"Zimmer aufräumen", "progress":20},{"id": 12324, "date":"11.08.2020", "description":"Bett beziehen", "progress":0},{"id": 16324, "date":"11.02.2020", "description":"Nudeln kochen", "progress":100}]';
-    var todos = JSON.parse(receivedData);
+    //var receivedData = '[{"id": 13324, "date":"01.03.2020", "description":"Baum fällen", "progress":80},{"id": 13524, "date":"19.08.2022", "description":"Zimmer aufräumen", "progress":20},{"id": 12324, "date":"11.08.2020", "description":"Bett beziehen", "progress":0},{"id": 16324, "date":"11.02.2020", "description":"Nudeln kochen", "progress":100}]';
+    var todos = JSON.parse(data);
     for(var i = 0; i < todos.length; i++){
         var id = todos[i].id;
         var date = todos[i].date;
