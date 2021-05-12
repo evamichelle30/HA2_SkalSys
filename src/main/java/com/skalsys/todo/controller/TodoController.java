@@ -9,10 +9,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController // initialisierung
 public class TodoController {
     @Autowired //Spring bitte gib mir ein singleton
     private TodoRepository repository;
+
+    @RequestMapping("/")
+    public String hello(){
+        return "Hallo was geht";
+    }
 
     @GetMapping("/todos")
     public List<Todo> getAllTodos(){
