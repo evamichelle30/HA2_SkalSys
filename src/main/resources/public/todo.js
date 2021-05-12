@@ -14,7 +14,8 @@ function anlegen() {
     var date = document.getElementById("datum-eingeben").value;
     var anlegen = new Todo(0, date, description, 0);
     console.log(JSON.stringify(anlegen));
-    //parent.location='index.html';
+    //hier ein POST request
+    parent.location='index.html';
 }
 
 function editieren(id) {
@@ -23,7 +24,8 @@ function editieren(id) {
     var progress = document.getElementById("customRange1").value;
     var editieren = new Todo(id, date, description, progress);
     console.log(JSON.stringify(editieren));
-    //parent.location='index.html';
+    //hier ein PUT request
+    parent.location='index.html';
 }
 
 function card(id, date, description, progress) {
@@ -50,15 +52,15 @@ function card(id, date, description, progress) {
 }
 
 function createCards() {
-    var receivedData = '{"todo":[{"id": "13324", "date":"01.03.2020", "description":"Baum fällen", "progress":"80"},{"id": "13524", "date":"19.08.2022", "description":"Zimmer aufräumen", "progress":"20"},{"id": "12324", "date":"11.08.2020", "description":"Bett beziehen", "progress":"0"},{"id": "16324", "date":"11.02.2020", "description":"Nudeln kochen", "progress":"100"}]}';
+    //hier ein GET request an den server
+    var receivedData = '[{"id": 13324, "date":"01.03.2020", "description":"Baum fällen", "progress":80},{"id": 13524, "date":"19.08.2022", "description":"Zimmer aufräumen", "progress":20},{"id": 12324, "date":"11.08.2020", "description":"Bett beziehen", "progress":0},{"id": 16324, "date":"11.02.2020", "description":"Nudeln kochen", "progress":100}]';
     var todos = JSON.parse(receivedData);
-    for(var i = 0; i < todos.todo.length; i++){
-        var id = todos.todo[i].id;
-        var date = todos.todo[i].date;
-        var description = todos.todo[i].description;
-        var progress = todos.todo[i].progress;
+    for(var i = 0; i < todos.length; i++){
+        var id = todos[i].id;
+        var date = todos[i].date;
+        var description = todos[i].description;
+        var progress = todos[i].progress;
         document.getElementById("todo-list").innerHTML += card(id, date, description, progress);
-        //console.log(document.getElementById("description13324").innerHTML);
     }
 }
 
@@ -68,6 +70,7 @@ function loeschen(id) {
     var progress = document.getElementById("progress" + id).innerHTML.slice(0, -1);
     var loeschen = new Todo(id, date, description, progress);
     console.log(JSON.stringify(loeschen));
+    //hier ein DELETE request
 }
 
 function editCard(id) {
