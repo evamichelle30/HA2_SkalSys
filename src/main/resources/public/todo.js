@@ -15,8 +15,11 @@ function anlegen() {
     var anlegen = new Todo(0, date, description, 0);
     console.log(JSON.stringify(anlegen));
     //hier ein POST request
-    
-    parent.location='index.html';
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:8080/todos/", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(anlegen));
+    setTimeout(() => { parent.location='index.html'; }, 100);
 }
 
 function editieren(id) {
@@ -24,9 +27,12 @@ function editieren(id) {
     var date = document.getElementById("datum-aendern").value;
     var progress = document.getElementById("customRange1").value;
     var editieren = new Todo(id, date, description, progress);
-    console.log(JSON.stringify(editieren));
     //hier ein PUT request
-    parent.location='index.html';
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT", "http://localhost:8080/todos/" + id, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(editieren));
+    setTimeout(() => { parent.location='index.html'; }, 100);
 }
 
 function card(id, date, description, progress) {
@@ -85,8 +91,12 @@ function loeschen(id) {
     var date = document.getElementById("date" + id).innerHTML.substr(7);
     var progress = document.getElementById("progress" + id).innerHTML.slice(0, -1);
     var loeschen = new Todo(id, date, description, progress);
-    console.log(JSON.stringify(loeschen));
-    //hier ein DELETE request
+    //DELETE request
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", "http://localhost:8080/todos/" + id, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(loeschen));
+    setTimeout(() => { parent.location='index.html'; }, 100);
 }
 
 function editCard(id) {
